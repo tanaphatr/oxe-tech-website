@@ -1,36 +1,108 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# OXE Tech Thailand - Official Website
 
-## Getting Started
+A modern, responsive website built with Next.js 15, TypeScript, and Tailwind CSS for OXE Tech Thailand - a leading technology solutions provider.
 
-First, run the development server:
+## 🚀 Features
+
+- **Modern Design**: Clean, professional, and visually appealing interface
+- **Responsive**: Optimized for all devices (mobile, tablet, desktop)
+- **Performance**: Fast loading with Next.js optimization
+- **TypeScript**: Type-safe development experience
+- **Tailwind CSS**: Utility-first CSS framework for rapid styling
+- **SEO Optimized**: Proper meta tags and structure for search engines
+
+## 🛠️ Tech Stack
+
+- **Framework**: Next.js 15 with App Router
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS v4
+- **Package Manager**: Yarn
+- **Deployment**: Ready for Vercel, Netlify, or any hosting platform
+
+## 📋 Prerequisites
+
+- Node.js 18+ installed
+- Yarn package manager
+
+## 🔧 Installation & Setup
+
+1. Clone the repository:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone <repository-url>
+cd oxe-tech-website
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+yarn install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+3. Run the development server:
 
-## Learn More
+```bash
+yarn dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+4. Open [http://localhost:3000](http://localhost:3000) to view the website
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📁 Project Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+├── .github/
+│   └── copilot-instructions.md    # Copilot development guidelines
+├── public/                        # Static assets
+├── src/
+│   ├── app/                      # App Router pages
+│   │   ├── layout.tsx            # Root layout
+│   │   ├── page.tsx              # Home page
+│   │   └── globals.css           # Global styles
+│   └── components/               # React components
+│       ├── Header.tsx            # Navigation header
+│       └── Footer.tsx            # Footer component
+├── package.json
+└── README.md
+```
 
-## Deploy on Vercel
+## 🎨 Website Sections
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Hero Section**: Eye-catching introduction with call-to-action
+- **About Section**: Company overview and core values
+- **Services Section**: Technology solutions and offerings
+- **Contact Section**: Contact form and company information
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🚀 Available Scripts
+
+- `yarn dev` - Start development server
+- `yarn build` - Build production version
+- `yarn start` - Start production server
+- `yarn lint` - Run ESLint
+
+## 📱 Responsive Breakpoints
+
+- **Mobile**: < 640px
+- **Tablet**: 640px - 1024px
+- **Desktop**: > 1024px
+
+## 🌟 Key Technologies Used
+
+- **React 19**: Latest React features and hooks
+- **Next.js 15**: App Router, Server Components, Image optimization
+- **Tailwind CSS v4**: Modern utility-first styling
+- **TypeScript**: Type safety and better development experience
+
+## 📞 Contact
+
+For any questions or support regarding this website:
+
+- **Email**: info@oxetechthailand.com
+- **Location**: Bangkok, Thailand
+
+## 📄 License
+
+This project is proprietary and confidential to OXE Tech Thailand.
+
+---
+
+Built with ❤️ by OXE Tech Thailand Team
