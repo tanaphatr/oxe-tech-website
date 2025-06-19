@@ -72,10 +72,10 @@ export const translations: Translations = {
     th: "สร้างแอปพลิเคชันมือถือที่ใช้งานง่าย สำหรับทั้งระบบ iOS และ Android พร้อมฟีเจอร์ที่ตอบโจทย์ผู้ใช้",
     en: "Create user-friendly mobile applications for both iOS and Android platforms with features that meet user needs.",
   },
-  resourcing: { th: "จัดหาบุคลากร", en: "Personnel Recruitment" },
+  resourcing: { th: "การจัดหาบุคลากร", en: "Resourcing" },
   resourcingDesc: {
-    th: "บริการจัดหาและคัดเลือกบุคลากรที่มีความเชี่ยวชาญด้านเทคโนโลยี เพื่อเสริมความแข็งแกร่งให้กับองค์กรของคุณ",
-    en: "Recruitment and selection services for technology specialists to strengthen your organization.",
+    th: "การจัดการทรัพยากรบุคคลและการสรรหาคนคุณภาพเพื่อเป็นส่วนหนึ่งในการพัฒนาองค์กรของเรา",
+    en: "Personal resource management and recruitment of quality people to be a part of our organization's development.",
   },
   database: { th: "โซลูชันฐานข้อมูล", en: "Database Solutions" },
   databaseDesc: {

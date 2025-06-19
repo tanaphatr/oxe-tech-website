@@ -14,7 +14,7 @@ export default function HeroSection() {
     }, []);
 
     return (
-        <section id="home" className="pt-16 pb-20 bg-gradient-to-br from-blue-50 via-white to-purple-50 min-h-screen flex items-center">
+        <section id="home" className="pt-16 pb-20 bg-gradient-to-br from-blue-50 via-white to-sky-50 min-h-screen flex items-center">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
@@ -22,7 +22,7 @@ export default function HeroSection() {
                             {getTranslation('heroTitle', language)}
                         </h1>
                         <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">
-                            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">{getTranslation('heroTitleAccent', language)}</span>
+                            <span className="bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">{getTranslation('heroTitleAccent', language)}</span>
                         </h1>
                         <p className="text-xl text-gray-600 mb-8 leading-relaxed">
                             {getTranslation('heroDescription', language)}
@@ -30,7 +30,7 @@ export default function HeroSection() {
                         <div className="flex flex-col sm:flex-row gap-4">
                             <Link
                                 href="#about"
-                                className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-lg font-semibold hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-center"
+                                className="bg-gradient-to-r from-blue-600 to-blue-800 text-white px-8 py-4 rounded-lg font-semibold hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-center"
                             >
                                 {getTranslation('exploreServices', language)}
                             </Link>
@@ -45,16 +45,15 @@ export default function HeroSection() {
 
                     <div className={`transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
                         <div className="relative">
-                            <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 transform rotate-3 hover:rotate-0 transition-transform duration-300">
+                            <div className="bg-gradient-to-r from-blue-600 to-blue-800 rounded-2xl p-8 transform rotate-3 hover:rotate-0 transition-transform duration-300">
                                 <div className="bg-white rounded-xl p-6 transform -rotate-3">
                                     <div className="grid grid-cols-2 gap-4">
                                         <div className="bg-gradient-to-br from-blue-100 to-blue-200 rounded-lg p-4 text-center">
                                             <div className="text-2xl font-bold text-blue-600">10+</div>
                                             <div className="text-sm text-blue-800">{getTranslation('projects', language)}</div>
-                                        </div>
-                                        <div className="bg-gradient-to-br from-purple-100 to-purple-200 rounded-lg p-4 text-center">
-                                            <div className="text-2xl font-bold text-purple-600">1</div>
-                                            <div className="text-sm text-purple-800">{getTranslation('years', language)}</div>
+                                        </div>                                        <div className="bg-gradient-to-br from-sky-100 to-sky-200 rounded-lg p-4 text-center">
+                                            <div className="text-2xl font-bold text-sky-600">1</div>
+                                            <div className="text-sm text-sky-800">{getTranslation('years', language)}</div>
                                         </div>
                                         <div className="bg-gradient-to-br from-green-100 to-green-200 rounded-lg p-4 text-center">
                                             <div className="text-2xl font-bold text-green-600">100%</div>

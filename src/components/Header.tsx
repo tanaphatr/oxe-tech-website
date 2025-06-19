@@ -16,7 +16,7 @@ export default function Header() {
                     {/* Logo */}
                     <div className="flex-shrink-0">
                         <Link href="/" className="flex items-center space-x-2">
-                            <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
+                            <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-blue-800 rounded-lg flex items-center justify-center">
                                 <span className="text-white font-bold text-lg">O</span>
                             </div>
                             <span className="text-xl font-bold text-gray-900">OXE Tech</span>
@@ -43,7 +43,7 @@ export default function Header() {
                         </button>
                         <Link
                             href="#contact"
-                            className="bg-gradient-to-r from-blue-600 to-purple-600 text-white min-w-[150px] text-center px-6 py-2 rounded-lg hover:shadow-lg transition-all duration-300"
+                            className="bg-gradient-to-r from-blue-600 to-blue-800 text-white min-w-[150px] text-center px-6 py-2 rounded-lg hover:shadow-lg transition-all duration-300"
                         >
                             {getTranslation('getStarted', language)}
                         </Link>
@@ -87,7 +87,7 @@ export default function Header() {
 
                             <Link
                                 href="#contact"
-                                className="block mx-3 mt-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-lg text-center"
+                                className="block mx-3 mt-4 bg-gradient-to-r from-blue-600 to-blue-800 text-white px-4 py-2 rounded-lg text-center"
                             >
                                 {getTranslation('getStarted', language)}
                             </Link>

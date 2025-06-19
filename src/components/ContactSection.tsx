@@ -13,17 +13,8 @@ export default function ContactSection() {
         email: '',
         subject: '',
         message: ''
-    });
-    const [isSubmitting, setIsSubmitting] = useState(false);
+    }); const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitStatus, setSubmitStatus] = useState<'success' | 'error' | null>(null);
-
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        const { name, value } = e.target;
-        setFormData(prev => ({
-            ...prev,
-            [name]: value
-        }));
-    };
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -60,7 +51,7 @@ export default function ContactSection() {
     };
 
     return (
-        <section id="contact" className="py-20 bg-gradient-to-br from-blue-600 to-purple-600">
+        <section id="contact" className="py-20 bg-gradient-to-br from-blue-600 to-blue-800">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-16">
                     <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">{getTranslation('contactTitle', language)}</h2>
