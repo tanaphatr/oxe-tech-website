@@ -2,6 +2,9 @@
 
 import { useLanguage } from '@/contexts/LanguageContext';
 import { getTranslation } from '@/lib/translations';
+import { portfolioData } from '@/data/portfolio';
+import Image from 'next/image';
+import Link from 'next/link';
 
 export default function PortfolioSection() {
     const { language } = useLanguage();
@@ -14,67 +17,47 @@ export default function PortfolioSection() {
                     <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                         {getTranslation('portfolioDescription', language)}
                     </p>
+                </div>                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {portfolioData.slice(0, 3).map((item) => (
+                        <Link
+                            key={item.id}
+                            href={`/Portfolio/${item.slug}`}
+                            className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                        >
+                            <div className="aspect-video relative bg-gradient-to-br from-blue-100 to-blue-300 flex items-center justify-center">
+                                {item.images.thumbnail && (
+                                    <Image
+                                        src={item.images.thumbnail}
+                                        alt={item.title[language]}
+                                        fill
+                                        className="object-cover"
+                                    />
+                                )}
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                                    <div className="p-6 text-white">
+                                        <h3 className="text-lg font-semibold mb-2">{item.title[language]}</h3>
+                                        <p className="text-sm text-gray-200 mb-3">{item.shortDescription[language]}</p>
+                                        <div className="flex flex-wrap gap-2">
+                                            {item.technologies.slice(0, 3).map((tech, techIndex) => (
+                                                <span key={techIndex} className="bg-white/20 px-2 py-1 rounded text-xs">
+                                                    {tech.name}
+                                                </span>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </Link>))}
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {/* Project 1 */}
-                    <div className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
-                        <div className="aspect-video bg-gradient-to-br from-blue-100 to-blue-300 flex items-center justify-center">
-                            <div className="text-center p-8">
-                                <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-800 rounded-lg flex items-center justify-center mx-auto mb-4">
-                                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2" />
-                                    </svg>
-                                </div>
-                                <h3 className="text-xl font-bold text-gray-800">{getTranslation('projectManagement', language)}</h3>
-                            </div>
-                        </div>
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                            <div className="p-6 text-white">
-                                <h3 className="text-lg font-semibold mb-2">{getTranslation('projectManagement', language)}</h3>
-                                <p className="text-sm text-gray-200">{getTranslation('projectDescription1', language)}</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Project 2 */}
-                    <div className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
-                        <div className="aspect-video bg-gradient-to-br from-green-100 to-green-300 flex items-center justify-center">
-                            <div className="text-center p-8">
-                                <div className="w-16 h-16 bg-gradient-to-br from-green-600 to-blue-600 rounded-lg flex items-center justify-center mx-auto mb-4">
-                                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                                    </svg>
-                                </div>
-                                <h3 className="text-xl font-bold text-gray-800">{getTranslation('ecommerceSystem', language)}</h3>
-                            </div>
-                        </div>
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                            <div className="p-6 text-white">
-                                <h3 className="text-lg font-semibold mb-2">{getTranslation('ecommerceSystem', language)}</h3>
-                                <p className="text-sm text-gray-200">{getTranslation('projectDescription2', language)}</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Project 3 */}
-                    <div className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">                        <div className="aspect-video bg-gradient-to-br from-sky-100 to-sky-300 flex items-center justify-center">
-                        <div className="text-center p-8">
-                            <div className="w-16 h-16 bg-gradient-to-br from-blue-700 to-sky-600 rounded-lg flex items-center justify-center mx-auto mb-4">
-                                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                                </svg>
-                            </div>
-                            <h3 className="text-xl font-bold text-gray-800">{getTranslation('mobileApp', language)}</h3>
-                        </div>
-                    </div>
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                            <div className="p-6 text-white">
-                                <h3 className="text-lg font-semibold mb-2">{getTranslation('mobileApp', language)}</h3>
-                                <p className="text-sm text-gray-200">{getTranslation('projectDescription3', language)}</p>
-                            </div>
-                        </div>
-                    </div>
+                {/* View All Portfolio Button */}
+                <div className="text-center mt-12">
+                    <Link
+                        href="/Portfolio"
+                        className="inline-block bg-blue-600 text-white px-8 py-4 rounded-lg font-medium hover:bg-blue-700 transition-colors"
+                    >
+                        {language === 'th' ? 'ดูผลงานทั้งหมด' : 'View All Portfolio'}
+                    </Link>
                 </div>
 
                 {/* Portfolio List */}

@@ -26,7 +26,7 @@ export default function Header() {
                         <Link href="#home" className="text-gray-700 hover:text-blue-600 transition-colors">{getTranslation('home', language)}</Link>
                         <Link href="#about" className="text-gray-700 hover:text-blue-600 transition-colors">{getTranslation('about', language)}</Link>
                         <Link href="#services" className="text-gray-700 hover:text-blue-600 transition-colors">{getTranslation('services', language)}</Link>
-                        <Link href="#portfolio" className="text-gray-700 hover:text-blue-600 transition-colors">{getTranslation('portfolio', language)}</Link>
+                        <Link href="/#portfolio" className="text-gray-700 hover:text-blue-600 transition-colors">{getTranslation('portfolio', language)}</Link>
                         <Link href="#contact" className="text-gray-700 hover:text-blue-600 transition-colors">{getTranslation('contact', language)}</Link>
                     </nav>
 
@@ -71,7 +71,7 @@ export default function Header() {
                             <Link href="#home" className="block px-3 py-2 text-gray-700 hover:text-blue-600">{getTranslation('home', language)}</Link>
                             <Link href="#about" className="block px-3 py-2 text-gray-700 hover:text-blue-600">{getTranslation('about', language)}</Link>
                             <Link href="#services" className="block px-3 py-2 text-gray-700 hover:text-blue-600">{getTranslation('services', language)}</Link>
-                            <Link href="#portfolio" className="block px-3 py-2 text-gray-700 hover:text-blue-600">{getTranslation('portfolio', language)}</Link>
+                            <Link href="/#portfolio" className="block px-3 py-2 text-gray-700 hover:text-blue-600">{getTranslation('portfolio', language)}</Link>
                             <Link href="#contact" className="block px-3 py-2 text-gray-700 hover:text-blue-600">{getTranslation('contact', language)}</Link>
 
                             {/* Language Toggle for Mobile */}
