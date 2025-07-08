@@ -19,7 +19,7 @@ export default function PortfolioDetailView({ portfolio }: PortfolioDetailViewPr
             {/* Header */}
             <div className="bg-white shadow-sm">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-                    <Link href="/#portfolio" className="text-blue-600 hover:text-blue-800 flex items-center">
+                    <Link href="/Portfolio" className="text-blue-600 hover:text-blue-800 flex items-center">
                         <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                         </svg>

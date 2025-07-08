@@ -30,6 +30,18 @@ export default function PortfolioListClient() {
             {/* Hero Section */}
             <div className="bg-gradient-to-br from-blue-600 to-blue-800 text-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+                    <div className="flex items-center gap-4 mb-8">
+                        <Link href="/#portfolio" className="text-blue-200 hover:text-white flex items-center transition-colors">
+                            <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                            </svg>
+                            {language === 'th' ? 'กลับไปหน้าหลัก' : 'Back to Home'}
+                        </Link>
+                        <span className="text-blue-200">/</span>
+                        <span className="text-white font-medium">
+                            {language === 'th' ? 'ผลงานทั้งหมด' : 'All Portfolio'}
+                        </span>
+                    </div>
                     <div className="text-center">
                         <h1 className="text-4xl md:text-5xl font-bold mb-6">
                             {language === 'th' ? 'ผลงานของเรา' : 'Our Portfolio'}
@@ -52,8 +64,8 @@ export default function PortfolioListClient() {
                             key={category.value}
                             onClick={() => handleCategoryChange(category.value as PortfolioCategory)}
                             className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${activeCategory === category.value
-                                    ? 'bg-blue-600 text-white shadow-lg'
-                                    : 'bg-white text-gray-700 hover:bg-blue-50 hover:text-blue-600 shadow-md'
+                                ? 'bg-blue-600 text-white shadow-lg'
+                                : 'bg-white text-gray-700 hover:bg-blue-50 hover:text-blue-600 shadow-md'
                                 }`}
                         >
                             {category.label[language]}
@@ -81,8 +93,8 @@ export default function PortfolioListClient() {
                                 </div>
                                 <div className="absolute top-4 right-4">
                                     <span className={`px-3 py-1 text-xs font-medium rounded-full ${item.status === 'completed' ? 'bg-green-100 text-green-800' :
-                                            item.status === 'in-progress' ? 'bg-yellow-100 text-yellow-800' :
-                                                'bg-blue-100 text-blue-800'
+                                        item.status === 'in-progress' ? 'bg-yellow-100 text-yellow-800' :
+                                            'bg-blue-100 text-blue-800'
                                         }`}>
                                         {item.status === 'completed' ? (language === 'th' ? 'เสร็จสิ้น' : 'Completed') :
                                             item.status === 'in-progress' ? (language === 'th' ? 'กำลังดำเนินการ' : 'In Progress') :
