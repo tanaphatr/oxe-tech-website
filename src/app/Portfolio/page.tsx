@@ -1,9 +1,5 @@
 import { Metadata } from 'next';
-import dynamic from 'next/dynamic';
-
-const PortfolioListClient = dynamic(() => import('./PortfolioListClient'), {
-    ssr: false
-});
+import PortfolioListClient from './PortfolioListClient';
 
 export const metadata: Metadata = {
     title: 'Portfolio - OXE Tech',

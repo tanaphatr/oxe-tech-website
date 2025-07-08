@@ -25,6 +25,9 @@ export default function TechnologyToolsSection() {
                             width={48}
                             height={48}
                             className="object-contain"
+                            onError={(e) => {
+                                console.error('Error loading React image:', e);
+                            }}
                         />
                     </div>
 
@@ -36,6 +39,9 @@ export default function TechnologyToolsSection() {
                             width={48}
                             height={48}
                             className="object-contain"
+                            onError={(e) => {
+                                console.error('Error loading Next.js image:', e);
+                            }}
                         />
                     </div>
 
@@ -47,6 +53,9 @@ export default function TechnologyToolsSection() {
                             width={48}
                             height={48}
                             className="object-contain"
+                            onError={(e) => {
+                                console.error('Error loading JavaScript image:', e);
+                            }}
                         />
                     </div>
 
@@ -58,6 +67,9 @@ export default function TechnologyToolsSection() {
                             width={48}
                             height={48}
                             className="object-contain"
+                            onError={(e) => {
+                                console.error('Error loading Node.js image:', e);
+                            }}
                         />
                     </div>
 

@@ -228,7 +228,7 @@ export default function PortfolioDetailClient({ portfolio }: PortfolioDetailClie
                                 </h2>
                                 <div className="bg-blue-50 p-8 rounded-xl border border-blue-200">
                                     <blockquote className="text-lg text-gray-800 mb-6 italic">
-                                        "{portfolio.testimonial.text[language]}"
+                                        `{portfolio.testimonial.text[language]}`
                                     </blockquote>
                                     <div className="flex items-center">
                                         <div>

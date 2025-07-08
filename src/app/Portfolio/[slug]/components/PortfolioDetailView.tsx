@@ -63,15 +63,36 @@ export default function PortfolioDetailView({ portfolio }: PortfolioDetailViewPr
                                 </div>
                             </div>
                         </div>
-                        <div className="relative">
-                            <div className="aspect-video rounded-xl overflow-hidden shadow-2xl bg-gray-200 flex items-center justify-center">
-                                <div className="text-center text-gray-500">
-                                    <svg className="w-16 h-16 mx-auto mb-4" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="evenodd" />
-                                    </svg>
-                                    <p className="text-sm">{portfolio.title[language]} Image</p>
-                                </div>
+                        <div className="relative max-w-2xl">
+                            <div className="aspect-video rounded-xl overflow-hidden shadow-2xl bg-gray-200 mb-4 relative">
+                                <Image
+                                    src={portfolio.images.gallery[selectedImage]}
+                                    alt={portfolio.title[language]}
+                                    fill
+                                    className="object-contain"
+                                    priority
+                                />
                             </div>
+                            {/* Image Gallery Thumbnails */}
+                            {portfolio.images.gallery.length > 1 && (
+                                <div className="grid grid-cols-4 gap-2">
+                                    {portfolio.images.gallery.map((image, index) => (
+                                        <button
+                                            key={index}
+                                            onClick={() => setSelectedImage(index)}
+                                            className={`aspect-video rounded-lg overflow-hidden relative ${selectedImage === index ? 'ring-2 ring-blue-500' : ''
+                                                }`}
+                                        >
+                                            <Image
+                                                src={image}
+                                                alt={`${portfolio.title[language]} ${index + 1}`}
+                                                fill
+                                                className="object-contain"
+                                            />
+                                        </button>
+                                    ))}
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>
@@ -90,8 +111,13 @@ export default function PortfolioDetailView({ portfolio }: PortfolioDetailViewPr
                             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
                                 {portfolio.technologies.map((tech, index) => (
                                     <div key={index} className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow text-center">
-                                        <div className="w-12 h-12 mx-auto mb-4 relative bg-gray-100 rounded-lg flex items-center justify-center">
-                                            <span className="text-xs font-medium text-gray-600">{tech.name}</span>
+                                        <div className="w-12 h-12 mx-auto mb-4 relative">
+                                            <Image
+                                                src={tech.icon}
+                                                alt={tech.name}
+                                                fill
+                                                className="object-contain"
+                                            />
                                         </div>
                                         <p className="font-medium text-gray-800">{tech.name}</p>
                                     </div>
@@ -186,7 +212,7 @@ export default function PortfolioDetailView({ portfolio }: PortfolioDetailViewPr
                                 </h2>
                                 <div className="bg-blue-50 p-8 rounded-xl border border-blue-200">
                                     <blockquote className="text-lg text-gray-800 mb-6 italic">
-                                        "{portfolio.testimonial.text[language]}"
+                                        &ldquo;{portfolio.testimonial.text[language]}&rdquo;
                                     </blockquote>
                                     <div className="flex items-center">
                                         <div>
