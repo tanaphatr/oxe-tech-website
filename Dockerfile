@@ -1,22 +1,58 @@
-# ใช้ node:18 image เป็น base
-FROM node:18
+# Build stage
+FROM node:18-alpine AS deps
+
+# Install dependencies only when needed
+RUN apk add --no-cache libc6-compat
 
 WORKDIR /app
 
-# copy เฉพาะ package.json และ package-lock.json
+# Copy package files
 COPY package*.json ./
 
-# ลบ node_modules ถ้ามีใน context (ถ้าแอบส่งมาด้วย)
-RUN rm -rf node_modules
+# Install dependencies
+RUN npm ci
 
-# ติดตั้ง dependencies ใหม่ (ต้องติดตั้งบน Linux จริงใน container)
-RUN npm install
+# Build stage
+FROM node:18-alpine AS builder
 
-# copy source code ที่เหลือทั้งหมด
+WORKDIR /app
+
+# Copy dependencies from deps stage
+COPY --from=deps /app/node_modules ./node_modules
+
+# Copy source code
 COPY . .
 
-# build
+# Set environment variables for build
+ENV NODE_ENV=production
+ENV NEXT_TELEMETRY_DISABLED=1
+
+# Build the application
 RUN npm run build
 
-# รันแอป (แล้วแต่โปรเจกต์)
-CMD ["npm", "start"]
+# Production stage
+FROM node:18-alpine AS runner
+
+RUN apk add --no-cache libc6-compat
+
+WORKDIR /app
+
+ENV NODE_ENV=production
+ENV NEXT_TELEMETRY_DISABLED=1
+
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nextjs
+
+# Copy the built application
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+COPY --from=builder --chown=nextjs:nodejs /app/public ./public
+
+USER nextjs
+
+EXPOSE 3000
+
+ENV PORT=3000
+ENV HOSTNAME="0.0.0.0"
+
+CMD ["node", "server.js"]
