@@ -3,7 +3,8 @@ FROM node:18 AS builder
 WORKDIR /app
 
 COPY package*.json ./
-RUN npm ci --ignore-scripts
+RUN npm cache clean --force
+RUN npm install --legacy-peer-deps
 
 COPY . .
 RUN npm run build
