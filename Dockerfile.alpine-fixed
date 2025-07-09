@@ -1,30 +1,35 @@
 # Build stage
-FROM node:18-bullseye-slim AS deps
+FROM node:18-alpine AS deps
 
 # Install dependencies only when needed including build tools for native modules
-RUN apt-get update && apt-get install -y \
+RUN apk add --no-cache \
+    libc6-compat \
     python3 \
     make \
     g++ \
-    && rm -rf /var/lib/apt/lists/*
+    musl-dev \
+    linux-headers
 
 WORKDIR /app
 
 # Copy package files
 COPY package*.json ./
 
-# Install dependencies with rebuild for native modules
-RUN npm ci --include=dev
+# Install dependencies and rebuild native modules for Alpine
+RUN npm ci --include=dev && \
+    npm rebuild @parcel/watcher lightningcss --force
 
 # Build stage
-FROM node:18-bullseye-slim AS builder
+FROM node:18-alpine AS builder
 
 # Install build dependencies
-RUN apt-get update && apt-get install -y \
+RUN apk add --no-cache \
+    libc6-compat \
     python3 \
     make \
     g++ \
-    && rm -rf /var/lib/apt/lists/*
+    musl-dev \
+    linux-headers
 
 WORKDIR /app
 
@@ -38,11 +43,16 @@ COPY . .
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
 
+# Rebuild native modules again in builder stage
+RUN npm rebuild lightningcss --force
+
 # Build the application
 RUN npm run build
 
 # Production stage
-FROM node:18-bullseye-slim AS runner
+FROM node:18-alpine AS runner
+
+RUN apk add --no-cache libc6-compat
 
 WORKDIR /app
 
