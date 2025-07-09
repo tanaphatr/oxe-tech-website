@@ -1,5 +1,5 @@
 # Build stage
-FROM node:20 AS builder
+FROM node:18 AS builder
 WORKDIR /app
 
 COPY package*.json ./
@@ -9,7 +9,7 @@ COPY . .
 RUN npm run build
 
 # Run stage
-FROM node:20
+FROM node:18
 WORKDIR /app
 
 COPY --from=builder /app ./
