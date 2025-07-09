@@ -1,16 +1,15 @@
 # Build stage
-FROM node:18 AS builder
+FROM node:20 AS builder
 WORKDIR /app
 
 COPY package*.json ./
-RUN npm cache clean --force
-RUN npm install --legacy-peer-deps
+RUN npm install
 
 COPY . .
 RUN npm run build
 
 # Run stage
-FROM node:18
+FROM node:20
 WORKDIR /app
 
 COPY --from=builder /app ./
