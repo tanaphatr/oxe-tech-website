@@ -1,18 +1,18 @@
-# Use node base image
 FROM node:18
 
-# Create app directory
 WORKDIR /app
 
-# Copy source
-COPY . .
+# คัดลอก package.json และ lock file
+COPY package*.json ./
 
-# Install dependencies
+# ติดตั้ง dependencies
 RUN npm install
 
-# Build (optional for production)
+# คัดลอก source ทั้งหมด
+COPY . .
+
+# สร้าง build
 RUN npm run build
 
-# Serve (depends on your framework)
-EXPOSE 3000
-CMD ["npm", "run", "start"]
+# รันแอป (อาจใช้ serve หรือ next start แล้วแต่โปรเจกต์)
+CMD ["npm", "start"]
