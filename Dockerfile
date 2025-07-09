@@ -1,67 +1,20 @@
-# Build stage
-FROM node:18-bullseye-slim AS deps
-
-# Install dependencies only when needed including build tools for native modules
-RUN apt-get update && apt-get install -y \
-    python3 \
-    make \
-    g++ \
-    && rm -rf /var/lib/apt/lists/*
+FROM node:18
 
 WORKDIR /app
 
-# Copy package files
+# copy เฉพาะ package.json และ package-lock.json
 COPY package*.json ./
 
-# Install dependencies with rebuild for native modules
-RUN npm ci --include=dev
+# ลบ node_modules เก่าที่ติดมากับ context (ถ้ามี)
+RUN rm -rf node_modules package-lock.json
 
-# Build stage
-FROM node:18-bullseye-slim AS builder
+# ติดตั้ง dependencies ใหม่ใน container (บน Linux จริง)
+RUN npm install
 
-# Install build dependencies
-RUN apt-get update && apt-get install -y \
-    python3 \
-    make \
-    g++ \
-    && rm -rf /var/lib/apt/lists/*
-
-WORKDIR /app
-
-# Copy dependencies from deps stage
-COPY --from=deps /app/node_modules ./node_modules
-
-# Copy source code
+# คัดลอก source code ที่เหลือ
 COPY . .
 
-# Set environment variables for build
-ENV NODE_ENV=production
-ENV NEXT_TELEMETRY_DISABLED=1
-
-# Build the application
+# build โปรเจกต์
 RUN npm run build
 
-# Production stage
-FROM node:18-bullseye-slim AS runner
-
-WORKDIR /app
-
-ENV NODE_ENV=production
-ENV NEXT_TELEMETRY_DISABLED=1
-
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
-
-# Copy the built application
-COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
-COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
-COPY --from=builder --chown=nextjs:nodejs /app/public ./public
-
-USER nextjs
-
-EXPOSE 3000
-
-ENV PORT=3000
-ENV HOSTNAME="0.0.0.0"
-
-CMD ["node", "server.js"]
+CMD ["npm", "start"]
