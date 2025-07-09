@@ -1,19 +1,34 @@
 # Build stage
 FROM node:18-alpine AS deps
 
-# Install dependencies only when needed
-RUN apk add --no-cache libc6-compat
+# Install dependencies only when needed including build tools for native modules
+RUN apk add --no-cache \
+    libc6-compat \
+    python3 \
+    make \
+    g++ \
+    musl-dev \
+    linux-headers
 
 WORKDIR /app
 
 # Copy package files
 COPY package*.json ./
 
-# Install dependencies
-RUN npm ci
+# Install dependencies with rebuild for native modules
+RUN npm ci --include=dev
 
 # Build stage
 FROM node:18-alpine AS builder
+
+# Install build dependencies
+RUN apk add --no-cache \
+    libc6-compat \
+    python3 \
+    make \
+    g++ \
+    musl-dev \
+    linux-headers
 
 WORKDIR /app
 
