@@ -1,17 +1,18 @@
-# Build stage
-FROM node:18 AS builder
+# Use node base image
+FROM node:18
+
+# Create app directory
 WORKDIR /app
 
-COPY package*.json ./
+# Copy source
+COPY . .
+
+# Install dependencies
 RUN npm install
 
-COPY . .
+# Build (optional for production)
 RUN npm run build
 
-# Run stage
-FROM node:18
-WORKDIR /app
-
-COPY --from=builder /app ./
+# Serve (depends on your framework)
 EXPOSE 3000
-CMD ["npm", "start"]
+CMD ["npm", "run", "start"]
