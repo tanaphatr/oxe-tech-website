@@ -1,23 +1,17 @@
-# Step 1: ใช้ node base image
-FROM node:18-alpine
-
-# Step 2: ตั้ง working directory
+# Build stage
+FROM node:18 AS builder
 WORKDIR /app
 
-# Step 3: Copy ไฟล์ package
 COPY package*.json ./
-
-# Step 4: ติดตั้ง dependencies
 RUN npm install
 
-# Step 5: Copy source code
 COPY . .
-
-# Step 6: Build Project
 RUN npm run build
 
-# Step 7: เปิด port
-EXPOSE 3000
+# Run stage
+FROM node:18
+WORKDIR /app
 
-# Step 8: สั่งรัน server
+COPY --from=builder /app ./
+EXPOSE 3000
 CMD ["npm", "start"]
